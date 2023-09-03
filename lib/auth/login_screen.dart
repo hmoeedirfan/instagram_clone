@@ -1,7 +1,9 @@
 // ignore_for_file: avoid_print
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:instagram_clone/auth/firebase_auth_methods.dart';
 import 'package:instagram_clone/auth/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -10,7 +12,7 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
- 
+
 class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -22,25 +24,15 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // // Sign In Method
-  // void signIn() async {
-  //   try {
-  //     await FirebaseAuth.instance.signInWithEmailAndPassword(
-  //       email: emailController.text,
-  //       password: passwordController.text,
-  //     );
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == 'user-not-found') {
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         const SnackBar(
-  //           content: Text('Do Sign up'),
-  //         ),
-  //       );
-  //     } else if (e.code == 'wrong-password') {
-  //       print('Wrong password provided for that user.');
-  //     }
-  //   }
-  // }
+  
+  // Log In Method
+  void logInUser() async {
+    FirebaseAuthMethods(FirebaseAuth.instance).logInUser(
+      emailController.text,
+      passwordController.text,
+      context,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 30),
                   // Login Button with Email
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () => logInUser(),
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.symmetric(vertical: 14),
