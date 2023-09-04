@@ -51,4 +51,7 @@ class FirebaseAuthMethods {
       showSnackBar(context, e.message!);
     }
   }
+
+  // Login With Facebook
+  
 }
