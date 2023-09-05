@@ -111,6 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 30),
                   // Login with Facebook
                   GestureDetector(
+                    onTap: () {
+                      FirebaseAuthMethods(FirebaseAuth.instance).signInWithFacebook(context);
+                    },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
