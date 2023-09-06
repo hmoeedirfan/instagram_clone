@@ -5,6 +5,7 @@ import 'package:instagram_clone/homepage.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
+  // Will add provider
 
   @override
   Widget build(BuildContext context) {
